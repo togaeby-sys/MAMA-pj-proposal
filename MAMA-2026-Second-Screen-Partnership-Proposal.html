@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>2026 MAMA AWARDS Official Second-Screen Fan Experience Proposal — Pocket Twin × CJ ENM</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+  :root{
+    /* MAMA Awards Prestige Palette — burgundy + gold */
+    --paper:#FBF7F1;
+    --paper-2:#F2EBE0;
+    --ink:#1A1410;
+    --ink-soft:#4A3F32;
+    --ink-faint:#8A7E6E;
+    --primary:#7C1F2A;
+    --primary-soft:#F5DBDF;
+    --primary-deep:#5A0F1C;
+    --gold:#C9A55F;
+    --gold-soft:#F5EAD0;
+    --gold-deep:#9A7C3F;
+    --line:#E5DCC8;
+    --line-soft:#EDE5D2;
+    --mnet:#FF4F8E;
+    --mnet-soft:#FFD9E5;
+    --ok:#3B7E4A;
+    --warn:#C97A2D;
+    --risk:#A03A2A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:var(--paper);color:var(--ink);font-family:'Pretendard',sans-serif;font-feature-settings:'ss01','ss02';font-weight:400;line-height:1.7;}
+
+  .doc{display:grid;grid-template-columns:248px 1fr;max-width:1380px;margin:0 auto;position:relative;}
+
+  .draft-stamp{
+    position:fixed;top:18px;right:24px;z-index:50;
+    padding:6px 14px;background:rgba(124,31,42,.96);color:#fff;
+    border-radius:3px;font-size:.6rem;letter-spacing:.32em;font-weight:700;
+    text-transform:uppercase;box-shadow:0 2px 8px rgba(0,0,0,.15);
+  }
+
+  .toc{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--line);padding:36px 24px;background:var(--paper);}
+  .toc .brand-mark{font-size:.58rem;letter-spacing:.32em;color:var(--primary);font-weight:700;text-transform:uppercase;margin-bottom:6px;}
+  .toc .brand-title{font-size:.94rem;letter-spacing:-.01em;font-weight:600;line-height:1.4;color:var(--ink);margin-bottom:22px;}
+  .toc .brand-title em{font-style:normal;color:var(--primary);font-weight:500;}
+  .toc .section-head{font-size:.56rem;letter-spacing:.32em;color:var(--gold-deep);font-weight:700;text-transform:uppercase;margin:14px 0 6px;padding-bottom:6px;border-bottom:1px solid var(--gold);}
+  .toc .section-head.appendix{color:var(--ink-faint);border-bottom-color:var(--line);}
+  .toc ol{list-style:none;margin:0;padding:0;}
+  .toc ol li{margin-bottom:1px;}
+  .toc ol li a{display:flex;align-items:baseline;gap:8px;padding:6px 6px;font-size:.7rem;color:var(--ink-soft);text-decoration:none;border-radius:3px;transition:all .15s ease;font-weight:400;line-height:1.4;}
+  .toc ol li a:hover{background:var(--paper-2);color:var(--ink);}
+  .toc ol li a.active{background:var(--primary-soft);color:var(--primary-deep);font-weight:500;}
+  .toc ol li a .num{color:var(--primary);font-weight:700;font-size:.56rem;letter-spacing:.12em;flex-shrink:0;min-width:24px;}
+  .toc ol.appendix-list li a .num{color:var(--ink-faint);}
+  .toc ol.appendix-list li a{font-size:.66rem;color:var(--ink-faint);}
+  .toc ol.appendix-list li a.active{color:var(--gold-deep);background:var(--gold-soft);}
+  .toc .meta{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);font-size:.64rem;color:var(--ink-faint);line-height:1.7;font-weight:400;}
+  .toc .meta .label{font-size:.52rem;letter-spacing:.22em;color:var(--primary);font-weight:700;text-transform:uppercase;margin-bottom:2px;margin-top:8px;}
+
+  .main{padding:0 56px 64px;max-width:920px;margin:0 auto;}
+
+  /* Cover — MAMA Prestige Awards */
+  .cover{margin:0 -56px 8px;padding:84px 56px 68px;background:linear-gradient(135deg, #0A0608 0%, #1A0A10 30%, #2A0F18 60%, #4A1A26 100%);color:#fff;border-bottom:1px solid var(--line);position:relative;overflow:hidden;}
+  .cover::before{content:"";position:absolute;top:-50%;right:-20%;width:80%;height:200%;background:radial-gradient(ellipse at center, rgba(201,165,95,.20) 0%, transparent 60%);pointer-events:none;}
+  .cover::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--primary) 50%, var(--gold) 70%, transparent 100%);}
+  .cover-pre{font-size:.6rem;letter-spacing:.4em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:14px;position:relative;}
+  .cover-title-en{font-weight:300;font-size:clamp(1.7rem,3.2vw,2.4rem);letter-spacing:-0.02em;line-height:1.22;color:#fff;margin-bottom:14px;position:relative;}
+  .cover-title-en .accent{color:var(--gold);font-weight:400;}
+  .cover-title-ko{font-weight:300;font-size:clamp(1rem,1.8vw,1.32rem);letter-spacing:-0.018em;line-height:1.55;color:rgba(255,255,255,.86);margin-bottom:28px;position:relative;}
+  .cover-tag{font-size:.96rem;color:#F5EAD0;font-style:italic;font-weight:400;margin-bottom:36px;position:relative;line-height:1.6;}
+  .cover-meta{display:flex;justify-content:flex-start;margin-top:32px;padding-top:24px;border-top:1px solid rgba(201,165,95,.3);position:relative;}
+  .meta-item .lab{font-size:.55rem;letter-spacing:.36em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:6px;}
+  .meta-item .val{font-size:.96rem;color:#fff;font-weight:500;line-height:1.5;}
+
+  section{padding:54px 0 8px;border-bottom:1px solid var(--line-soft);}
+  section:last-child{border-bottom:none;}
+  .page-num{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+  .page-num .line{width:32px;height:1px;background:var(--primary);}
+  .page-num span{font-size:.58rem;letter-spacing:.32em;color:var(--primary);font-weight:700;text-transform:uppercase;}
+  .page-num.appendix .line{background:var(--gold-deep);}
+  .page-num.appendix span{color:var(--gold-deep);}
+  .section-title{font-weight:200;font-size:clamp(1.5rem,2.4vw,1.95rem);letter-spacing:-0.02em;line-height:1.26;color:var(--ink);margin-bottom:8px;}
+  .section-title strong{font-weight:400;color:var(--primary);}
+  .section-subtitle{font-size:.9rem;color:var(--ink-faint);font-weight:400;letter-spacing:.02em;margin-bottom:24px;font-style:italic;}
+
+  h2{font-weight:500;font-size:1.06rem;color:var(--ink);margin:30px 0 12px;letter-spacing:-0.018em;display:flex;align-items:baseline;gap:14px;}
+  h2 .nb{font-weight:700;font-size:.66rem;letter-spacing:.22em;color:var(--primary);text-transform:uppercase;flex-shrink:0;}
+  h3{font-weight:500;font-size:.95rem;color:var(--ink);margin:22px 0 10px;letter-spacing:-0.01em;}
+
+  p{margin-bottom:14px;color:var(--ink-soft);font-weight:400;font-size:.9rem;line-height:1.78;}
+  p b{color:var(--ink);font-weight:600;}
+  p em{font-style:normal;color:var(--primary);font-weight:500;}
+  ul,ol{margin:10px 0 14px 22px;color:var(--ink-soft);}
+  ul li,ol li{margin-bottom:6px;font-size:.88rem;line-height:1.72;}
+
+  blockquote{margin:20px 0;padding:18px 24px;border-left:3px solid var(--gold);background:var(--paper-2);font-weight:400;color:var(--ink);font-size:.92rem;line-height:1.7;border-radius:0 3px 3px 0;}
+  blockquote b{color:var(--primary);font-weight:600;}
+
+  .hero-msg{
+    margin:24px 0;padding:34px 32px;
+    background:linear-gradient(135deg, #1A0A10 0%, #2A0F18 60%, #3A1A26 100%);
+    color:#fff;border-radius:6px;position:relative;overflow:hidden;
+  }
+  .hero-msg::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--mnet) 50%, var(--gold) 70%, transparent 100%);}
+  .hero-msg .lab{font-size:.55rem;letter-spacing:.32em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:14px;}
+  .hero-msg .big{font-weight:300;font-size:clamp(1.1rem,1.9vw,1.4rem);line-height:1.65;color:#fff;letter-spacing:-0.005em;}
+  .hero-msg .big .accent{color:var(--gold);font-weight:500;}
+  .hero-msg .big .mnet-ac{color:var(--mnet);font-weight:500;}
+
+  .metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0;}
+  .metric{padding:22px 24px;background:#fff;border:1px solid var(--line);border-radius:3px;border-top:3px solid var(--gold);}
+  .metric .lab{font-size:.54rem;letter-spacing:.3em;color:var(--primary);font-weight:700;text-transform:uppercase;margin-bottom:10px;}
+  .metric .stat{font-weight:200;font-size:2rem;color:var(--ink);letter-spacing:-0.03em;line-height:1;margin-bottom:6px;}
+  .metric .stat.primary{color:var(--primary);}
+  .metric .stat .unit{font-size:.84rem;font-weight:400;color:var(--ink-faint);margin-left:4px;letter-spacing:0;}
+  .metric h4{font-weight:600;font-size:.86rem;color:var(--ink);margin:6px 0;letter-spacing:-0.01em;}
+  .metric p{font-size:.76rem;line-height:1.55;color:var(--ink-soft);font-weight:300;margin-top:6px;margin-bottom:0;}
+
+  .pillar-grid{display:grid;grid-template-columns:1fr;gap:10px;margin:22px 0;}
+  .pillar{display:grid;grid-template-columns:46px 1fr;gap:18px;padding:20px 24px;background:#fff;border:1px solid var(--line);border-radius:3px;align-items:start;}
+  .pillar .num{font-weight:200;font-size:1.5rem;color:var(--primary);line-height:1;letter-spacing:-0.02em;}
+  .pillar .body h4{font-weight:600;font-size:.95rem;color:var(--ink);margin-bottom:6px;letter-spacing:-0.01em;}
+  .pillar .body p{font-size:.84rem;line-height:1.65;color:var(--ink-soft);margin:0 0 8px;}
+  .pillar .body .kpi-tag{display:inline-block;padding:3px 10px;border-radius:3px;background:var(--gold-soft);color:var(--gold-deep);font-size:.66rem;letter-spacing:.06em;font-weight:600;}
+
+  .dual-channel{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0;}
+  .channel-card{padding:24px 26px;border-radius:6px;color:#fff;position:relative;overflow:hidden;}
+  .channel-card.mnet{background:linear-gradient(135deg, #C9356B 0%, #FF4F8E 100%);}
+  .channel-card.pocket{background:linear-gradient(135deg, #5A0F1C 0%, #7C1F2A 100%);}
+  .channel-card .role{font-size:.55rem;letter-spacing:.32em;color:rgba(255,255,255,.88);font-weight:700;text-transform:uppercase;margin-bottom:10px;}
+  .channel-card h3{font-weight:400;font-size:1.35rem;color:#fff;margin:0 0 8px;letter-spacing:-0.01em;}
+  .channel-card .sub{font-size:.82rem;color:rgba(255,255,255,.85);margin-bottom:14px;line-height:1.5;}
+  .channel-card ul{margin:0 0 0 18px;padding:0;color:#fff;}
+  .channel-card ul li{font-size:.78rem;color:rgba(255,255,255,.92);margin-bottom:4px;line-height:1.6;}
+  .channel-card .stamp{position:absolute;top:18px;right:20px;padding:3px 10px;border-radius:3px;background:rgba(255,255,255,.18);font-size:.55rem;letter-spacing:.22em;font-weight:700;text-transform:uppercase;}
+  .bridge-arrow{text-align:center;font-size:1rem;color:var(--primary);font-weight:500;margin:6px 0;letter-spacing:.05em;}
+
+  .scope-table{width:100%;border-collapse:collapse;margin:22px 0;font-size:.85rem;}
+  .scope-table th{padding:12px 14px;background:var(--paper-2);font-weight:600;font-size:.66rem;letter-spacing:.18em;color:var(--primary);text-transform:uppercase;text-align:left;border-bottom:1.5px solid var(--primary);}
+  .scope-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-soft);font-weight:400;line-height:1.65;}
+  .scope-table td.in-cell{background:#F2F7F0;}
+  .scope-table td.out-cell{background:#FCEEEE;}
+  .scope-table td.next-cell{background:var(--gold-soft);}
+  .scope-table td b{color:var(--ink);}
+  .scope-table .mark{display:inline-block;width:18px;height:18px;border-radius:50%;text-align:center;line-height:18px;font-size:.7rem;font-weight:700;margin-right:8px;color:#fff;}
+  .scope-table .mark.ok{background:var(--ok);}
+  .scope-table .mark.no{background:var(--risk);}
+  .scope-table .mark.next{background:var(--gold-deep);}
+
+  .biz-options{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0;}
+  .biz-option{padding:22px 22px;background:#fff;border:1px solid var(--line);border-radius:4px;position:relative;}
+  .biz-option.recommended{border:2px solid var(--primary);background:linear-gradient(180deg, #FDF8F5 0%, #fff 100%);}
+  .biz-option .opt-tag{font-size:.56rem;letter-spacing:.28em;font-weight:700;text-transform:uppercase;margin-bottom:6px;color:var(--ink-faint);}
+  .biz-option .opt-tag.rec{color:var(--primary);}
+  .biz-option .rec-badge{position:absolute;top:-10px;right:14px;padding:3px 12px;background:var(--primary);color:#fff;border-radius:3px;font-size:.56rem;letter-spacing:.16em;font-weight:700;text-transform:uppercase;}
+  .biz-option h4{font-weight:600;font-size:.92rem;color:var(--ink);margin-bottom:10px;letter-spacing:-0.01em;}
+  .biz-option .pro{font-size:.78rem;color:var(--ok);font-weight:500;margin:6px 0 2px;}
+  .biz-option .con{font-size:.78rem;color:var(--risk);font-weight:500;margin:2px 0;}
+  .biz-option p{font-size:.8rem;margin-bottom:6px;}
+
+  .week-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:22px 0;}
+  .week-cell{padding:18px 16px;background:#fff;border:1px solid var(--line);}
+  .week-cell:not(:last-child){border-right:none;}
+  .week-cell .wk{font-size:.6rem;letter-spacing:.22em;color:var(--primary);font-weight:700;text-transform:uppercase;margin-bottom:6px;}
+  .week-cell h5{font-weight:600;font-size:.86rem;color:var(--ink);margin-bottom:8px;letter-spacing:-0.01em;}
+  .week-cell ul{margin:0 0 0 16px;}
+  .week-cell ul li{font-size:.74rem;color:var(--ink-soft);margin-bottom:3px;line-height:1.5;}
+
+  /* Appendix divider */
+  .appendix-divider{
+    margin:60px -56px 24px;padding:72px 56px;
+    background:linear-gradient(135deg, var(--paper-2) 0%, var(--gold-soft) 100%);
+    border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);
+    text-align:center;
+  }
+  .appendix-divider .lab{font-size:.58rem;letter-spacing:.5em;color:var(--gold-deep);font-weight:700;text-transform:uppercase;margin-bottom:14px;}
+  .appendix-divider h2{font-weight:200;font-size:clamp(2rem,3vw,2.6rem);color:var(--ink);letter-spacing:-0.02em;margin:0;display:block;}
+  .appendix-divider h2 strong{font-weight:400;color:var(--gold-deep);}
+  .appendix-divider p{margin:14px auto 0;max-width:560px;font-size:.86rem;color:var(--ink-soft);font-style:italic;}
+
+  /* Appendix sections — slightly muted treatment */
+  section.appendix{background:transparent;}
+  section.appendix .section-title strong{color:var(--gold-deep);}
+  section.appendix h2 .nb{color:var(--gold-deep);}
+
+  .journey-phase{padding:22px 26px;background:#fff;border:1px solid var(--line);border-radius:4px;margin-bottom:12px;border-left:4px solid var(--gold);}
+  .journey-phase .phase-tag{font-size:.58rem;letter-spacing:.28em;color:var(--gold-deep);font-weight:700;text-transform:uppercase;margin-bottom:6px;}
+  .journey-phase h4{font-weight:600;font-size:1rem;color:var(--ink);margin-bottom:8px;letter-spacing:-0.01em;}
+  .journey-phase p{font-size:.84rem;margin-bottom:8px;}
+  .journey-phase ul{margin:6px 0 0 18px;}
+  .journey-phase ul li{font-size:.82rem;color:var(--ink-soft);line-height:1.65;margin-bottom:3px;}
+
+  .package-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:22px 0;}
+  .package{padding:22px 24px;background:#fff;border:1px solid var(--line);border-radius:4px;border-top:3px solid var(--primary);}
+  .package .pkg-num{font-size:.6rem;letter-spacing:.28em;color:var(--primary);font-weight:700;text-transform:uppercase;margin-bottom:6px;}
+  .package h4{font-weight:600;font-size:.95rem;color:var(--ink);margin-bottom:8px;letter-spacing:-0.01em;}
+  .package ul{margin:0 0 0 18px;}
+  .package ul li{font-size:.82rem;color:var(--ink-soft);line-height:1.6;margin-bottom:3px;}
+
+  .kpi-dashboard{margin:22px 0;background:var(--paper-2);border-radius:6px;padding:24px;border:1px solid var(--line);}
+  .kpi-row{display:grid;grid-template-columns:140px 1fr 180px;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center;}
+  .kpi-row:last-child{border-bottom:none;}
+  .kpi-row .cat{font-size:.58rem;letter-spacing:.22em;color:var(--primary);font-weight:700;text-transform:uppercase;}
+  .kpi-row .metric-name{font-size:.86rem;color:var(--ink);font-weight:500;}
+  .kpi-row .target{font-size:.88rem;color:var(--primary);font-weight:600;text-align:right;font-variant-numeric:tabular-nums;}
+
+  .risk-table{width:100%;border-collapse:collapse;margin:22px 0;font-size:.84rem;}
+  .risk-table th{padding:11px 12px;background:var(--paper-2);font-weight:600;font-size:.62rem;letter-spacing:.16em;color:var(--primary);text-transform:uppercase;text-align:left;border-bottom:1.5px solid var(--primary);}
+  .risk-table td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-soft);font-weight:400;line-height:1.6;}
+  .risk-table td:first-child{font-weight:600;color:var(--ink);width:24%;}
+  .risk-table td.impact-h{color:var(--risk);font-weight:600;}
+  .risk-table td.impact-m{color:var(--warn);font-weight:600;}
+  .risk-table .resp{background:var(--paper-2);font-style:italic;}
+
+  .assumption-note{
+    margin:14px 0;padding:12px 16px;
+    background:#FFF6E6;border-left:3px solid var(--warn);border-radius:0 3px 3px 0;
+    font-size:.76rem;color:var(--ink-soft);line-height:1.6;font-style:italic;
+  }
+  .assumption-note b{color:var(--warn);font-style:normal;}
+
+  .closing-box{margin:30px 0;padding:38px 42px;background:linear-gradient(135deg, #1A0A10 0%, #2A0F18 50%, #4A1A26 100%);color:#fff;border-radius:6px;text-align:center;position:relative;overflow:hidden;}
+  .closing-box::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--mnet) 50%, var(--gold) 70%, transparent 100%);}
+  .closing-box blockquote{margin:0;background:transparent;border:none;padding:0;font-size:1rem;line-height:1.85;color:#fff;font-style:normal;font-weight:300;}
+  .closing-box blockquote b{color:var(--gold);font-weight:500;}
+
+  .doc-footer{margin-top:64px;padding:28px 0;border-top:1px solid var(--line);text-align:center;}
+  .doc-footer p{font-size:.76rem;color:var(--ink-faint);margin-bottom:4px;font-weight:400;}
+  .doc-footer .note{margin-top:12px;font-size:.66rem;color:var(--ink-faint);font-style:italic;font-weight:300;}
+  .doc-footer .draft{display:inline-block;padding:4px 12px;border-radius:3px;background:var(--primary-soft);color:var(--primary-deep);font-size:.6rem;letter-spacing:.22em;font-weight:700;text-transform:uppercase;margin-top:12px;}
+
+  @media (max-width: 900px){
+    .doc{grid-template-columns:1fr;}
+    .toc{position:relative;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:24px;}
+    .main{padding:0 28px 48px;}
+    .cover{margin:0 -28px 8px;padding:48px 28px;}
+    .appendix-divider{margin:40px -28px 24px;padding:48px 28px;}
+    .cover-meta{grid-template-columns:1fr 1fr;}
+    .metric-grid,.dual-channel,.biz-options,.week-grid,.package-grid{grid-template-columns:1fr;}
+    .kpi-row{grid-template-columns:1fr;gap:4px;}
+    .draft-stamp{top:auto;bottom:18px;right:18px;}
+  }
+  @media print{.toc,.draft-stamp{display:none;}.doc{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="draft-stamp">Draft for Partnership Discussion</div>
+
+<div class="doc">
+
+<aside class="toc">
+  <div>
+    <div class="brand-mark">External Proposal · CJ ENM</div>
+    <div class="brand-title">2026 MAMA AWARDS<br/><em>Official Second-Screen<br/>Fan Experience Proposal</em></div>
+
+    <div class="section-head">Core Proposal</div>
+    <ol>
+      <li><a href="#cover-section"><span class="num">01</span><span>Cover</span></a></li>
+      <li><a href="#executive"><span class="num">02</span><span>Executive Summary</span></a></li>
+      <li><a href="#why-now"><span class="num">03</span><span>Why Now</span></a></li>
+      <li><a href="#opportunity"><span class="num">04</span><span>CJ ENM Opportunity</span></a></li>
+      <li><a href="#concept"><span class="num">05</span><span>Partnership Concept</span></a></li>
+      <li><a href="#pilot"><span class="num">06</span><span>Pilot Scope</span></a></li>
+      <li><a href="#business"><span class="num">07</span><span>Business Model</span></a></li>
+      <li><a href="#nextstep"><span class="num">08</span><span>Next Step & Message</span></a></li>
+    </ol>
+
+    <div class="section-head appendix">Appendix</div>
+    <ol class="appendix-list">
+      <li><a href="#a-fit"><span class="num">A1</span><span>Pocket Twin Fit</span></a></li>
+      <li><a href="#a-journey"><span class="num">A2</span><span>User Journey</span></a></li>
+      <li><a href="#a-activation"><span class="num">A3</span><span>Activation Package</span></a></li>
+      <li><a href="#a-mnet"><span class="num">A4</span><span>Mnet Plus Integration</span></a></li>
+      <li><a href="#a-sponsor"><span class="num">A5</span><span>Sponsor Package</span></a></li>
+      <li><a href="#a-kpi"><span class="num">A6</span><span>KPI Dashboard</span></a></li>
+    </ol>
+  </div>
+  <div class="meta">
+    <div class="label">문서 종류</div>
+    Partnership Proposal Draft
+    <div class="label">버전</div>
+    v2.0 · May 2026
+    <div class="label">대상</div>
+    CJ ENM / MAMA<br/>Partnership Team
+    <div class="label">작성</div>
+    Pocket Twin (코코네)<br/>Marketing & Partnerships
+  </div>
+</aside>
+
+<main class="main">
+
+<!-- ============================================== -->
+<!-- ============ CORE PROPOSAL ================== -->
+<!-- ============================================== -->
+
+<!-- 01 Cover -->
+<section class="cover" id="cover-section">
+  <div class="cover-pre">Pocket Twin × CJ ENM · 2026 MAMA Partnership</div>
+  <h1 class="cover-title-en">2026 MAMA AWARDS<br/><span class="accent">Official Second-Screen</span><br/>Fan Experience Proposal</h1>
+  <p class="cover-title-ko">2026 MAMA 글로벌 팬 참여 확장을 위한<br/>포켓트윈 공식 세컨드 스크린 파트너십 제안</p>
+  <p class="cover-tag">"Mnet Plus 공식 시청을 중심으로,<br/>글로벌 Z세대 팬들이 아바타로 모이고 · 응원하고 · 기록하고 · 공유한다."</p>
+
+  <div class="cover-meta">
+    <div class="meta-item"><div class="lab">For</div><div class="val">CJ ENM / MAMA Awards Partnership Team</div></div>
+  </div>
+</section>
+
+<!-- 02 Executive Summary -->
+<section id="executive">
+  <div class="page-num"><span class="line"></span><span>Core 02 · Executive Summary</span></div>
+  <h1 class="section-title">Executive <strong>Summary</strong></h1>
+  <p class="section-subtitle">왜 이 파트너십인가 — 한 페이지 요약</p>
+
+  <div class="hero-msg">
+    <div class="lab">Core Proposition</div>
+    <div class="big">포켓트윈은 <span class="mnet-ac">Mnet Plus</span> 공식 시청을 중심으로,<br/>글로벌 Z세대 팬들이 아바타 룸·응원 스탬프·포토 프레임·팬덤 컬러 스테이지<br/><span style="white-space:nowrap;">UGC 미션</span>을 통해 함께 <span class="accent">모이고·응원하고·기록하고·공유하는</span><br/>MAMA의 <span class="accent">공식 세컨드 스크린 팬 경험 파트너</span>입니다.</div>
+  </div>
+
+  <h2><span class="nb">2.1</span>제안 요지</h2>
+  <p>2026 MAMA AWARDS는 단순 시상식 시청을 넘어, <b>글로벌 팬덤이 동시에 반응하고 공유하는 참여형 경험</b>으로 확장될 필요가 있습니다. 포켓트윈은 일본·한국·대만·북미 4개 시장에서 <em>아바타 기반 세컨드 스크린 공간</em>을 제공하여, Mnet Plus 공식 시청을 보완하는 글로벌 팬덤 소셜 레이어를 구축합니다.</p>
+
+  <h2><span class="nb">2.2</span>포켓트윈 운영 기반 — 검증된 팬덤 플랫폼</h2>
+
+  <div class="metric-grid">
+    <div class="metric">
+      <div class="lab">Japan · Core Market</div>
+      <div class="stat primary">17<span class="unit">만 DAU</span></div>
+      <h4>일본 일간 활성 사용자</h4>
+      <p>MAU 30만 · 2025년 매출 약 700억 원 · 1차 핵심 시장</p>
+    </div>
+    <div class="metric">
+      <div class="lab">Korea + Taiwan</div>
+      <div class="stat primary">2<span class="unit">만 DAU</span></div>
+      <h4>한국·대만 합산 사용자</h4>
+      <p>MAU 9만 · 2026년 예상 매출 약 150억 원 · K-pop 팬덤 반응 시장</p>
+    </div>
+    <div class="metric">
+      <div class="lab">English Version</div>
+      <div class="stat primary">2026.07<span class="unit"></span></div>
+      <h4>북미 영문판 런칭</h4>
+      <p>MAMA 시즌 4개월 전 런칭 · 글로벌 K-pop 팬덤 확장 테스트 시장</p>
+    </div>
+  </div>
+
+  <h2><span class="nb">2.3</span>CJ ENM에게 드리는 5가지 가치</h2>
+  <ol>
+    <li><b>MAMA 글로벌 팬 참여 확장</b> · 단순 시청 → 아바타 기반 참여 경험으로 확장</li>
+    <li><b>Mnet Plus 유입 보조</b> · 포켓트윈 내 "Watch on Mnet Plus" CTA로 공식 시청 트래픽 견인</li>
+    <li><b>Z세대 체류시간 확보</b> · 시상식 전후 8–10주간 시즌 캠페인 운영</li>
+    <li><b>SNS UGC 확산</b> · MAMA 공식 포토 프레임·메모리 영상의 사용자 자발 확산</li>
+    <li><b>스폰서 패키지 확장</b> · 디지털 팬 접점을 메인 스폰서 인벤토리로 확장 가능</li>
+  </ol>
+
+  <h2><span class="nb">2.4</span>접근 원칙</h2>
+  <ul>
+    <li><b>1년차 PoC 모델</b> — 개별 아티스트 IP를 제외한 저위험 구조로 시작</li>
+    <li><b>Mnet Plus 비경쟁</b> — 공식 시청 채널을 보완·유입 보조하는 위치 명확화</li>
+    <li><b>2년차 확장 옵션</b> — 성과 검증 후 아티스트·스폰서·오프라인 연계로 단계적 확장</li>
+  </ul>
+</section>
+
+<!-- 03 Why Now -->
+<section id="why-now">
+  <div class="page-num"><span class="line"></span><span>Core 03 · Why Now</span></div>
+  <h1 class="section-title">Why <strong>Now</strong></h1>
+  <p class="section-subtitle">2026 MAMA와 포켓트윈 협업의 6가지 타이밍 정합 논리</p>
+
+  <div class="pillar-grid">
+    <div class="pillar">
+      <div class="num">01</div>
+      <div class="body">
+        <h4>MAMA 일본 오사카 개최</h4>
+        <p>2026 MAMA AWARDS는 <b>11월 20–21일 일본 오사카</b>에서 개최. 일본 시장 자체가 핵심 거점인 시즌.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="num">02</div>
+      <div class="body">
+        <h4>Mnet Plus 글로벌 확장 방향</h4>
+        <p>Mnet Plus는 글로벌 생중계와 온·오프라인 이벤트 확장 추진 중. <em>디지털 팬 참여 레이어</em>가 자연스러운 보완재.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="num">03</div>
+      <div class="body">
+        <h4>일본 내 포켓트윈의 안정적 기반</h4>
+        <p>일본 MAU 30만·DAU 17만·2025년 매출 약 700억 원. <em>현장 이벤트와 디지털 팬덤 경험을 동시에 확장할 수 있는 사용자 풀</em>이 이미 존재.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="num">04</div>
+      <div class="body">
+        <h4>한국·대만 시장의 K-pop 친화도</h4>
+        <p>한국·대만 MAU 9만은 작은 규모이나, <em>MAMA 팬덤과 K-pop 친화도가 매우 높은 시장</em>으로 동시 운영 가치가 큼.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="num">05</div>
+      <div class="body">
+        <h4>북미 영문판 7월 런칭</h4>
+        <p>포켓트윈 영문판이 <b>2026년 7월 중순 북미 런칭</b> 예정. 11월 MAMA까지 약 4개월 간격은 글로벌 K-pop 팬덤 유입 채널로 활용하기에 자연스러운 모먼트.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="num">06</div>
+      <div class="body">
+        <h4>4개국 동시 운영 = MAMA 글로벌 성격과 부합</h4>
+        <p>MAMA는 단일 국가 이벤트가 아닌 <em>아시아·글로벌 K-pop 대표 시상식</em>. 포켓트윈의 4시장 동시 운영 구조와 구조적 정합.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 CJ ENM Opportunity -->
+<section id="opportunity">
+  <div class="page-num"><span class="line"></span><span>Core 04 · CJ ENM Opportunity</span></div>
+  <h1 class="section-title">CJ ENM <strong>Opportunity</strong></h1>
+  <p class="section-subtitle">MAMA가 얻는 5가지 전략적 가치</p>
+
+  <p>본 파트너십이 CJ ENM과 MAMA에 제공하는 핵심 가치는 다음과 같습니다. 각 항목은 측정 가능한 KPI 단위로 설계됩니다 <em>(상세 KPI 가정치는 Appendix A6 참조)</em>.</p>
+
+  <div class="pillar-grid">
+    <div class="pillar">
+      <div class="num">01</div>
+      <div class="body">
+        <h4>MAMA 글로벌 팬 참여 확장</h4>
+        <p>단순 방송 시청을 <em>아바타 기반 참여 경험</em>으로 확장. 시상식 모먼트가 팬-팬 간 인터랙션의 공간이 됩니다.</p>
+        <span class="kpi-tag">KPI · 룸 생성 / 룸 참여자 / 응원 스탬프 사용</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="num">02</div>
+      <div class="body">
+        <h4>Mnet Plus 공식 시청 유입 보조</h4>
+        <p>포켓트윈 내 <em>"Watch on Mnet Plus"</em> CTA·푸시·룸 위젯을 통해 공식 시청 트래픽 직접 견인. <b>경쟁 채널이 아닌 유입 보조 채널</b>로 기능.</p>
+        <span class="kpi-tag">KPI · Mnet Plus CTA 클릭 / 클릭 전환율 / 국가별 유입</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="num">03</div>
+      <div class="body">
+        <h4>Z세대 체류시간·재방문 확보</h4>
+        <p>본방 당일 1회성이 아닌 <em>시즌 8–10주 전체</em>로 운영. MAMA 모먼트가 단발 이벤트에서 <b>연속적 팬 경험 시즌</b>으로 확장.</p>
+        <span class="kpi-tag">KPI · 평균 체류시간 / 재방문율 / 이벤트 참여율</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="num">04</div>
+      <div class="body">
+        <h4>SNS UGC 확산</h4>
+        <p>MAMA 공식 포토 프레임·MAMA Night Memory Film 등 사용자 콘텐츠가 <em>X·Instagram·TikTok으로 자발 확산</em>되어 MAMA 브랜드의 디지털 도달 확장.</p>
+        <span class="kpi-tag">KPI · UGC 생성 / 공유 / 해시태그 도달</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="num">05</div>
+      <div class="body">
+        <h4>스폰서 패키지 확장</h4>
+        <p>Visa 등 MAMA 메인 스폰서에게 <em>"디지털 팬 접점"</em>이라는 새로운 인벤토리 제공. 기존 방송·현장 노출 외 추가 접점.</p>
+        <span class="kpi-tag">KPI · 스폰서 노출 / 클릭 / 브랜드 리프트</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 Partnership Concept -->
+<section id="concept">
+  <div class="page-num"><span class="line"></span><span>Core 05 · Partnership Concept</span></div>
+  <h1 class="section-title">Partnership <strong>Concept</strong></h1>
+  <p class="section-subtitle">Mnet Plus + Pocket Twin 듀얼 채널 구조</p>
+
+  <p>본 파트너십의 가장 중요한 구조적 원칙: <b>Mnet Plus는 공식 시청의 중심 채널, 포켓트윈은 그 시청을 보완하는 팬 참여 공간</b>. 두 채널은 경쟁 관계가 아닌 명확히 역할이 분리된 보완 관계입니다.</p>
+
+  <div class="dual-channel">
+    <div class="channel-card mnet">
+      <div class="stamp">Official Broadcast</div>
+      <div class="role">Primary Screen</div>
+      <h3>Mnet Plus</h3>
+      <div class="sub">MAMA 공식 시청의 중심 채널</div>
+      <ul>
+        <li>공식 생중계 (Live)</li>
+        <li>공식 투표 / 콘텐츠 허브</li>
+        <li>MAMA 본방 시청의 단독 채널</li>
+        <li>공식 하이라이트 / 다시보기</li>
+      </ul>
+    </div>
+    <div class="channel-card pocket">
+      <div class="stamp">Second Screen</div>
+      <div class="role">Companion Experience</div>
+      <h3>Pocket Twin</h3>
+      <div class="sub">세컨드 스크린 팬 참여 공간</div>
+      <ul>
+        <li>아바타 룸 · 친구 워치 경험</li>
+        <li>팬덤 컬러 스테이지</li>
+        <li>응원 스탬프 · MAMA 포토 프레임</li>
+        <li>UGC 생성 / 공유</li>
+        <li><b>Mnet Plus 본방 CTA 유도</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bridge-arrow">⤴ Mnet Plus가 본방을 송출 · 포켓트윈은 본방을 향한 팬 참여를 보조 ⤵</div>
+
+  <h2><span class="nb">5.1</span>4가지 운영 원칙</h2>
+  <ul>
+    <li><b>포켓트윈 내 MAMA 본방 영상 직접 송출 없음</b> — 모든 공식 시청은 Mnet Plus로 연결</li>
+    <li><b>방송 화면 캡처·녹화·무단 공유 금지</b> — 가이드라인 적용 및 모더레이션 운영</li>
+    <li><b>포켓트윈은 보조 공간</b> — 실시간 팬 리액션·아바타 소셜·포토 프레임·미션·UGC 제공</li>
+    <li><b>공식 시청 트래픽은 모두 Mnet Plus로 유도</b> — 모든 워치 관련 UI에 "Watch on Mnet Plus" CTA 노출</li>
+  </ul>
+
+  <blockquote>포켓트윈은 MAMA를 <em>"보지 못하게 막거나"</em>, <em>"대신 보여주는"</em> 채널이 아닙니다. MAMA를 <b>더 잘 보고, 더 깊이 참여하게 만드는</b> 보조 공간입니다.</blockquote>
+
+  <p style="margin-top:14px;font-size:.84rem;color:var(--ink-faint);">→ 운영 메커니즘 상세: <b>Appendix A4 · Mnet Plus Integration</b> · 사용자 여정 4단계: <b>Appendix A2 · User Journey</b></p>
+</section>
+
+<!-- 06 Pilot Scope -->
+<section id="pilot">
+  <div class="page-num"><span class="line"></span><span>Core 06 · Pilot Scope</span></div>
+  <h1 class="section-title">Pilot <strong>Scope</strong></h1>
+  <p class="section-subtitle">1년차 PoC + 2년차 확장 옵션</p>
+
+  <p>1년차는 <em>저위험 PoC</em>로 출발하여 성과 검증 후 2년차에 단계적 확장합니다. 양사 모두 1년차 학습 데이터를 근거로 차년도 확장 의사결정이 가능합니다.</p>
+
+  <table class="scope-table">
+    <thead>
+      <tr>
+        <th style="width:33%;">✓ 1년차 포함 (Low-Risk PoC)</th>
+        <th style="width:33%;">✗ 1년차 제외</th>
+        <th style="width:34%;">→ 2년차 확장 (성과 검증 후)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="in-cell">
+          <div><span class="mark ok">✓</span><b>MAMA 공식 캠페인 타이틀</b></div>
+          <div style="margin-top:8px;"><span class="mark ok">✓</span>MAMA 레드카펫·메인 스테이지 콜로리움</div>
+          <div style="margin-top:8px;"><span class="mark ok">✓</span>MAMA 공식 포토 프레임</div>
+          <div style="margin-top:8px;"><span class="mark ok">✓</span>MAMA 트로피 모티브 아이템</div>
+          <div style="margin-top:8px;"><span class="mark ok">✓</span>"Watch on Mnet Plus" CTA</div>
+          <div style="margin-top:8px;"><span class="mark ok">✓</span>팬 컬러 스테이지</div>
+          <div style="margin-top:8px;"><span class="mark ok">✓</span>응원 스탬프 · 환호 효과</div>
+          <div style="margin-top:8px;"><span class="mark ok">✓</span>자체 베스트 룩 어워드</div>
+          <div style="margin-top:8px;"><span class="mark ok">✓</span>MAMA Night Memory Film</div>
+          <div style="margin-top:8px;"><span class="mark ok">✓</span>4개국 운영 리포트</div>
+        </td>
+        <td class="out-cell">
+          <div><span class="mark no">✗</span><b>개별 아티스트 IP 사용</b></div>
+          <div style="margin-top:8px;"><span class="mark no">✗</span>아티스트 공식 가챠</div>
+          <div style="margin-top:8px;"><span class="mark no">✗</span>MAMA 본방 영상 직접 송출</div>
+          <div style="margin-top:8px;"><span class="mark no">✗</span>방송 화면 삽입형 실시간 연동</div>
+          <div style="margin-top:8px;"><span class="mark no">✗</span>공식 시상 부문 신설</div>
+          <div style="margin-top:8px;"><span class="mark no">✗</span>시상식 현장 무대 내 포켓트윈 노출</div>
+        </td>
+        <td class="next-cell">
+          <div><span class="mark next">→</span><b>개별 아티스트·소속사 협업</b></div>
+          <div style="margin-top:8px;"><span class="mark next">→</span>공식 아티스트 룸·디지털 굿즈</div>
+          <div style="margin-top:8px;"><span class="mark next">→</span>현장 QR 연계</div>
+          <div style="margin-top:8px;"><span class="mark next">→</span>MAMA 오프라인 부스 연동</div>
+          <div style="margin-top:8px;"><span class="mark next">→</span>스폰서 확장 패키지</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:14px;font-size:.84rem;color:var(--ink-faint);">→ 패키지별 상세 콘텐츠: <b>Appendix A3 · Activation Package</b></p>
+</section>
+
+<!-- 07 Business Model -->
+<section id="business">
+  <div class="page-num"><span class="line"></span><span>Core 07 · Business Model</span></div>
+  <h1 class="section-title">Business <strong>Model</strong></h1>
+  <p class="section-subtitle">3가지 수익 구조 옵션 (협의 가능 범위)</p>
+
+  <div class="biz-options">
+    <div class="biz-option">
+      <div class="opt-tag">Option A</div>
+      <h4>Fixed License Fee</h4>
+      <p>포켓트윈이 MAMA 브랜드 사용에 대한 <b>고정 라이선스 비용</b>을 CJ ENM에 지급.</p>
+      <p class="pro">+ CJ ENM 수익 안정성</p>
+      <p class="con">– 포켓트윈 초기 부담 증가</p>
+      <p class="con">– 성과 미달 시 학습 자산 한정</p>
+    </div>
+    <div class="biz-option recommended">
+      <div class="rec-badge">Recommended</div>
+      <div class="opt-tag rec">Option C · Hybrid</div>
+      <h4>MG + Revenue Share</h4>
+      <p><b>최소 보장금 + 초과 매출 쉐어</b>. 양사 안정성과 성장 업사이드 동시 확보.</p>
+      <p class="pro">+ CJ ENM 안정성 확보 (보장금)</p>
+      <p class="pro">+ 성과 연동 업사이드 (쉐어)</p>
+      <p class="pro">+ 1년차 PoC에 적합한 균형 모델</p>
+    </div>
+    <div class="biz-option">
+      <div class="opt-tag">Option B</div>
+      <h4>Revenue Share</h4>
+      <p>MAMA 한정 아이템·가챠 <b>순매출의 일부</b>를 CJ ENM과 배분.</p>
+      <p class="pro">+ 순수 성과 연동 구조</p>
+      <p class="con">– 초기 수익 예측 어려움</p>
+      <p class="con">– CJ ENM 안정성 측면 약점</p>
+    </div>
+  </div>
+
+  <blockquote><b>제안</b> · 1년차는 <em>Option C — Hybrid Model</em>을 기준으로 최소 보장금·한정 아이템 매출 쉐어·스폰서 패키지 확장 가능성을 함께 검토하는 구조가 가장 현실적이라 판단합니다. 구체 수치는 CJ ENM 사업팀과의 협의 단계에서 확정합니다.</blockquote>
+</section>
+
+<!-- 08 Next Step + Final Message -->
+<section id="nextstep">
+  <div class="page-num"><span class="line"></span><span>Core 08 · Next Step</span></div>
+  <h1 class="section-title">4-Week <strong>Next Step</strong></h1>
+  <p class="section-subtitle">CJ ENM 미팅 전후의 실행 계획</p>
+
+  <div class="week-grid">
+    <div class="week-cell">
+      <div class="wk">Week 1</div>
+      <h5>Proposal Alignment</h5>
+      <ul>
+        <li>CJ ENM 내부 검토용 제안서 제출</li>
+        <li>MAMA 브랜드 사용 가능 범위 1차 확인</li>
+        <li>Mnet Plus 연계 가능 범위 확인</li>
+        <li>핵심 담당자 채널 구축</li>
+      </ul>
+    </div>
+    <div class="week-cell">
+      <div class="wk">Week 2</div>
+      <h5>Rights & Scope Workshop</h5>
+      <ul>
+        <li>라이선스 범위 협의</li>
+        <li>아티스트 IP 제외 범위 확정</li>
+        <li>스폰서 노출 가능성 논의</li>
+        <li>법무·브랜드 가이드 확인</li>
+      </ul>
+    </div>
+    <div class="week-cell">
+      <div class="wk">Week 3</div>
+      <h5>Pilot Design</h5>
+      <ul>
+        <li>1년차 PoC 범위 확정</li>
+        <li>콜로리움·포토 프레임·CTA·UGC 미션 설계</li>
+        <li>KPI 대시보드 초안 확정</li>
+        <li>4개국 운영 일정 정리</li>
+      </ul>
+    </div>
+    <div class="week-cell">
+      <div class="wk">Week 4</div>
+      <h5>Commercial Discussion</h5>
+      <ul>
+        <li>라이선스 비용 또는 수익 배분 모델 협의</li>
+        <li>일정·운영 리소스·승인 프로세스 확정</li>
+        <li>계약 / LOI / MOU 검토</li>
+        <li>최종 합의안 도출</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2><span class="nb">8.1</span>최종 메시지</h2>
+  <div class="closing-box">
+    <blockquote>"포켓트윈은 MAMA 본방을 대체하지 않습니다.<br/><br/><b>Mnet Plus 공식 시청을 중심으로,</b><br/>글로벌 Z세대 팬들이 아바타로 모이고 · 응원하고 · 기록하고 · 공유하게 만드는<br/><b>MAMA의 공식 세컨드 스크린 팬 경험 파트너</b>가 되고자 합니다.<br/><br/>1년차는 아티스트 IP를 제외한 저위험 PoC로 시작하고,<br/>성과 검증 후 2년차부터 아티스트·스폰서·오프라인 현장 연계로 확장합니다."</blockquote>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- ============ APPENDIX DIVIDER =============== -->
+<!-- ============================================== -->
+<div class="appendix-divider">
+  <div class="lab">— End of Core Proposal —</div>
+  <h2>Appendix · <strong>상세 자료</strong></h2>
+  <p>법무 · 브랜드 · 운영 · 사업 각 팀의 심층 검토를 위한 8개 보충 섹션. 핵심 의사결정은 Core 1–8 페이지로 충분히 가능합니다.</p>
+</div>
+
+<!-- A1 Pocket Twin Fit -->
+<section id="a-fit" class="appendix">
+  <div class="page-num appendix"><span class="line"></span><span>Appendix A1 · Pocket Twin Fit</span></div>
+  <h1 class="section-title">Pocket Twin <strong>Fit</strong></h1>
+  <p class="section-subtitle">왜 포켓트윈이 MAMA의 세컨드 스크린 파트너로 적합한가</p>
+
+  <h2><span class="nb">A1.1</span>4개 시장의 전략적 역할</h2>
+  <table class="scope-table">
+    <thead><tr><th>시장</th><th>전략적 역할</th><th>MAMA 캠페인 활용</th></tr></thead>
+    <tbody>
+      <tr><td><b>일본</b></td><td>1차 핵심 시장 — 매출·트래픽 안정 기반</td><td>오사카 현장 이벤트와 디지털 팬덤 경험 결합 · 최대 매출 기여</td></tr>
+      <tr><td><b>한국</b></td><td>K-pop 본진 — 팬덤 반응성 검증</td><td>한국어 권 K-pop 팬덤 즉시 활성화 · 글로벌 트렌드 트리거</td></tr>
+      <tr><td><b>대만</b></td><td>중화권 진입 거점 — 동남아 확장 신호</td><td>중화권 K-pop 팬덤 디지털 접점 · 동남아 시너지 신호</td></tr>
+      <tr><td><b>북미</b></td><td>영문판 신규 런칭 — 글로벌 확장 테스트</td><td>북미 K-pop 팬덤 유입 · MAMA 글로벌 도달 확장 · 사용자 베이스 성장 테스트</td></tr>
+    </tbody>
+  </table>
+
+  <h2><span class="nb">A1.2</span>사용자 데모그래픽 — MAMA 팬덤과 구조적 일치</h2>
+  <p>포켓트윈 코어 사용자(<b>약 90% 여성 · 10·20대 70%+</b>)는 MAMA 시청자 데모그래픽과 거의 정확히 겹칩니다. <em>별도 신규 사용자 획득 캠페인 없이도 자연스러운 시너지가 가능한 구조</em>.</p>
+
+  <div class="metric-grid">
+    <div class="metric">
+      <div class="lab">Gender</div>
+      <div class="stat">90%</div>
+      <h4>여성 사용자 비중</h4>
+      <p>MAMA 시청자 여성 비중과 거의 정합</p>
+    </div>
+    <div class="metric">
+      <div class="lab">Age</div>
+      <div class="stat">70%+</div>
+      <h4>10·20대 비중</h4>
+      <p>Z세대·밀레니얼 중심 · K-pop 디지털 소비층</p>
+    </div>
+    <div class="metric">
+      <div class="lab">Behavior</div>
+      <div class="stat">高</div>
+      <h4>디지털 아이템 수용도</h4>
+      <p>아바타·룸 커스터마이징·한정 아이템 결제 검증</p>
+    </div>
+  </div>
+
+  <div class="assumption-note"><b>Note</b> · 위 지표는 코코네 내부 운영 데이터 기준. NDA 체결 후 코호트 분석·결제 패턴 등 상세 데이터 공유 가능.</div>
+</section>
+
+<!-- A2 User Journey -->
+<section id="a-journey" class="appendix">
+  <div class="page-num appendix"><span class="line"></span><span>Appendix A2 · User Journey</span></div>
+  <h1 class="section-title">User <strong>Journey</strong></h1>
+  <p class="section-subtitle">팬이 경험하는 MAMA 시즌 4단계</p>
+
+  <p>본방 당일 1시간이 아닌, <em>시즌 전체 8–10주에 걸친 팬 경험</em>으로 설계됩니다.</p>
+
+  <div class="journey-phase">
+    <div class="phase-tag">Phase 1 · Pre-Season (D-60 ~ D-7)</div>
+    <h4>사전 시즌 진입</h4>
+    <ul>
+      <li>MAMA 시즌 콜로리움 오픈 (룸·테마 시즌 한정 배포)</li>
+      <li>MAMA Red Carpet Look 가챠 (자체 디자인 의상)</li>
+      <li>친구 초대 미션 · 팬덤 컬러 스테이지 선택</li>
+      <li>코코론 노트 MAMA 시즌 해시태그 활성화</li>
+    </ul>
+  </div>
+  <div class="journey-phase">
+    <div class="phase-tag">Phase 2 · Pre-Show (D-7 ~ D-Day)</div>
+    <h4>본방 전 — 분위기 고조</h4>
+    <ul>
+      <li>MAMA 카운트다운 위젯 (4시장 시차 자동 처리)</li>
+      <li><b>"Watch on Mnet Plus" CTA 노출</b> — 본방 시작 1시간 전 푸시</li>
+      <li>팬덤 컬러 스테이지 최종 선택 · 워치룸 예약</li>
+      <li>D-1 단체 셀카·코디 챌린지</li>
+    </ul>
+  </div>
+  <div class="journey-phase">
+    <div class="phase-tag">Phase 3 · During Show (D-Day)</div>
+    <h4>본방 중 — 세컨드 스크린 동시 운영</h4>
+    <p><b>사용자는 Mnet Plus에서 MAMA 본방을 시청</b>하며, 포켓트윈에서는 친구·팬들과 동시 반응 공간을 운영합니다.</p>
+    <ul>
+      <li>아바타 룸에서 친구 8명 동시 관람 · 자율 그룹핑</li>
+      <li>응원 스탬프 · 박수 · 트로피 모션 · 환호 효과</li>
+      <li>주요 시점 리액션 미션 (시상 발표 직전·후 단체 셀카)</li>
+      <li><b>포켓트윈 내 MAMA 영상 송출 없음</b> — 모든 영상은 Mnet Plus에서 시청</li>
+    </ul>
+  </div>
+  <div class="journey-phase">
+    <div class="phase-tag">Phase 4 · Post-Show (D+1 ~ D+30)</div>
+    <h4>본방 후 — 추억의 자산화</h4>
+    <ul>
+      <li>MAMA Night Memory Film 자동 생성 (개인·친구 룸별)</li>
+      <li>공식 포토 프레임 SNS 공유 · 해시태그 도달</li>
+      <li>포켓트윈 Best Look Awards (사용자 참여 어워드)</li>
+      <li>Mnet Plus 하이라이트 / 공식 콘텐츠 연결 CTA</li>
+    </ul>
+  </div>
+</section>
+
+<!-- A3 Activation Package -->
+<section id="a-activation" class="appendix">
+  <div class="page-num appendix"><span class="line"></span><span>Appendix A3 · Activation Package</span></div>
+  <h1 class="section-title">Activation <strong>Package</strong></h1>
+  <p class="section-subtitle">1년차 PoC 기준 6개 핵심 패키지</p>
+
+  <div class="package-grid">
+    <div class="package">
+      <div class="pkg-num">Package 01</div>
+      <h4>MAMA Official Red Carpet Colorium</h4>
+      <ul>
+        <li>공식 레드카펫 무드 · 입장 포토존</li>
+        <li>MAMA 시즌 공식 포토 프레임</li>
+        <li>친구 동반 입장 · 단체 셀카 모드</li>
+      </ul>
+    </div>
+    <div class="package">
+      <div class="pkg-num">Package 02</div>
+      <h4>MAMA Main Stage Colorium</h4>
+      <ul>
+        <li>시상식 메인 스테이지 콘셉트 룸</li>
+        <li>트로피 모션 · 시상 순간 효과</li>
+        <li>박수 / 환호 스탬프</li>
+      </ul>
+    </div>
+    <div class="package">
+      <div class="pkg-num">Package 03</div>
+      <h4>MAMA Night Look Gacha</h4>
+      <ul>
+        <li>드레스 · 턱시도 · MC 룩 · 레드카펫 룩</li>
+        <li><b>아티스트 IP 미사용 · 자체 디자인</b></li>
+        <li>시즌 한정 배포 · 사후 영구 소장</li>
+      </ul>
+    </div>
+    <div class="package">
+      <div class="pkg-num">Package 04</div>
+      <h4>Fan Color Stage</h4>
+      <ul>
+        <li>핑크 · 블루 · 퍼플 · 골드 · 실버 · 레인보우</li>
+        <li>팬덤 응원봉 컬러 기반 자율 공간</li>
+        <li>특정 아티스트 명칭 공식 사용 불가</li>
+      </ul>
+    </div>
+    <div class="package">
+      <div class="pkg-num">Package 05</div>
+      <h4>Pocket Twin Best Look Awards</h4>
+      <ul>
+        <li>사용자 코디 어워드 (자체 운영)</li>
+        <li>MAMA 본 시상식과 <b>독립된 팬 참여 이벤트</b></li>
+        <li>공식 시상 부문과 혼동 방지 디스클레이머</li>
+      </ul>
+    </div>
+    <div class="package">
+      <div class="pkg-num">Package 06</div>
+      <h4>MAMA Night Memory Film</h4>
+      <ul>
+        <li>본방 후 자동 생성 · 개인·친구 룸별</li>
+        <li>아바타 활동·셀카·응원 모먼트 자동 편집</li>
+        <li>SNS 공유 유도 · 해시태그 도달 확장</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- A4 Mnet Plus Integration -->
+<section id="a-mnet" class="appendix">
+  <div class="page-num appendix"><span class="line"></span><span>Appendix A4 · Mnet Plus Integration</span></div>
+  <h1 class="section-title">Mnet Plus <strong>Integration</strong></h1>
+  <p class="section-subtitle">유입 보조 채널로서의 통합 메커니즘</p>
+
+  <h2><span class="nb">A4.1</span>6가지 통합 기능</h2>
+  <ol>
+    <li><b>"Watch on Mnet Plus" CTA 버튼</b> · 모든 워치룸·MAMA 시즌 콘텐츠 상시 노출</li>
+    <li><b>국가별 CTA 노출</b> · 일본·한국·대만·북미 각각 적절한 Mnet Plus 진입점 라우팅</li>
+    <li><b>본방 시작 1시간 전 푸시</b> · 사용자에게 본방 임박 알림 + Mnet Plus 직접 진입</li>
+    <li><b>본방 중 주요 시점 리액션 미션</b> · 시상 발표 직전 단체 셀카·환호 미션</li>
+    <li><b>본방 종료 후 하이라이트 연결</b> · Mnet Plus 공식 하이라이트·다시보기 자연 연결</li>
+    <li><b>국가별 클릭·참여·공유 리포트</b> · CJ ENM에 정기 리포트 형태로 공유</li>
+  </ol>
+
+  <h2><span class="nb">A4.2</span>CJ ENM에 제공 가능한 리포트</h2>
+  <div class="metric-grid">
+    <div class="metric">
+      <div class="lab">Traffic</div>
+      <h4>국가별 참여자 · CTA 클릭</h4>
+      <p>4개국 분리 · 시간대별 피크 분석</p>
+    </div>
+    <div class="metric">
+      <div class="lab">Engagement</div>
+      <h4>룸 생성 수 · 응원 스탬프 사용량</h4>
+      <p>시즌 누적 + 본방 당일 시간대별 추이</p>
+    </div>
+    <div class="metric">
+      <div class="lab">UGC</div>
+      <h4>생성 콘텐츠 · SNS 공유</h4>
+      <p>해시태그 도달·인용·언급 데이터</p>
+    </div>
+  </div>
+</section>
+
+<!-- A5 Sponsor Package -->
+<section id="a-sponsor" class="appendix">
+  <div class="page-num appendix"><span class="line"></span><span>Appendix A5 · Sponsor Package</span></div>
+  <h1 class="section-title">Sponsor <strong>Package</strong></h1>
+  <p class="section-subtitle">CJ ENM 스폰서십 인벤토리 확장 옵션</p>
+
+  <p>2026 MAMA의 주요 스폰서를 포켓트윈 디지털 팬 접점과 연계하여, <em>"디지털 팬 접점"</em>이라는 새로운 스폰서 인벤토리 제공. 아래는 Visa를 예시로 한 패키지이며, <b>Visa는 확정 참여 주체가 아닌 인벤토리 확장 옵션 예시</b>입니다.</p>
+
+  <div class="package-grid">
+    <div class="package">
+      <div class="pkg-num">Sponsor 01</div>
+      <h4>Presented Red Carpet Room</h4>
+      <ul>
+        <li>MAMA 레드카펫 콜로리움 내 스폰서 크레딧</li>
+        <li>"Presented by [Sponsor]" 자연 노출</li>
+        <li>4개국 디지털 노출 단위 리포트</li>
+      </ul>
+    </div>
+    <div class="package">
+      <div class="pkg-num">Sponsor 02</div>
+      <h4>Fan Mission</h4>
+      <ul>
+        <li>친구 초대·MAMA Look·포토 프레임 미션</li>
+        <li>미션 보상으로 스폰서 노출</li>
+        <li>참여율·전환율 측정 가능</li>
+      </ul>
+    </div>
+    <div class="package">
+      <div class="pkg-num">Sponsor 03</div>
+      <h4>Global Fan Map</h4>
+      <ul>
+        <li>4개국 응원 참여 시각화</li>
+        <li>스폰서 브랜드와 글로벌 임팩트 결합</li>
+        <li>실시간 업데이트 · SNS 공유</li>
+      </ul>
+    </div>
+    <div class="package">
+      <div class="pkg-num">Sponsor 04</div>
+      <h4>Limited Frame</h4>
+      <ul>
+        <li>MAMA 시즌 포토 프레임 내 스폰서 크레딧</li>
+        <li>사용자 SNS 공유 자연 확산</li>
+        <li>UGC 단위 도달 측정</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="assumption-note"><b>Note</b> · 스폰서 패키지는 CJ ENM 스폰서십팀과의 사전 협의를 전제로 운영. 특정 스폰서의 실제 참여는 별도 확정. <em>Sponsor identity referenced as illustrative example only.</em></div>
+</section>
+
+<!-- A7 KPI Dashboard -->
+<section id="a-kpi" class="appendix">
+  <div class="page-num appendix"><span class="line"></span><span>Appendix A6 · KPI Dashboard</span></div>
+  <h1 class="section-title">KPI <strong>Dashboard</strong></h1>
+  <p class="section-subtitle">CJ ENM 관심 지표 중심 1년차 목표 가정</p>
+
+  <div class="kpi-dashboard">
+    <div class="kpi-row"><div class="cat">Reach</div><div class="metric-name">캠페인 노출 수 (4개국 누적)</div><div class="target">3,000,000 – 5,000,000</div></div>
+    <div class="kpi-row"><div class="cat">Acquisition</div><div class="metric-name">신규 설치 / 가입 기여 (시즌 누적)</div><div class="target">100,000 – 300,000</div></div>
+    <div class="kpi-row"><div class="cat">Mnet Plus</div><div class="metric-name">Mnet Plus CTA 클릭 (4개국 누적)</div><div class="target">50,000 – 150,000</div></div>
+    <div class="kpi-row"><div class="cat">Engagement</div><div class="metric-name">워치룸 생성 수 (본방 시즌)</div><div class="target">30,000 – 80,000</div></div>
+    <div class="kpi-row"><div class="cat">Engagement</div><div class="metric-name">룸 참여자 수 (누적)</div><div class="target">200,000 – 500,000</div></div>
+    <div class="kpi-row"><div class="cat">Engagement</div><div class="metric-name">응원 스탬프 사용 수</div><div class="target">500,000 – 1,500,000</div></div>
+    <div class="kpi-row"><div class="cat">UGC</div><div class="metric-name">포토 프레임 / 셀카 생성</div><div class="target">100,000 – 300,000</div></div>
+    <div class="kpi-row"><div class="cat">UGC</div><div class="metric-name">SNS 공유 수 (외부 플랫폼)</div><div class="target">30,000 – 100,000</div></div>
+    <div class="kpi-row"><div class="cat">Retention</div><div class="metric-name">캠페인 참여자 D+7 재방문율</div><div class="target">25% – 35%</div></div>
+    <div class="kpi-row"><div class="cat">Monetization</div><div class="metric-name">MAMA 한정 아이템 구매 전환율</div><div class="target">3% – 7%</div></div>
+    <div class="kpi-row"><div class="cat">Sponsor</div><div class="metric-name">스폰서 브랜드 노출 수</div><div class="target">1,000,000 – 3,000,000</div></div>
+  </div>
+
+  <div class="assumption-note"><b>Note</b> · 위 수치는 1년차 PoC 운영을 위한 <em>초기 가정치</em>. 실제 목표는 포켓트윈 내부 데이터·CJ ENM 협의·시장 환경에 따라 확정합니다. <em>Initial assumption, subject to validation with CJ ENM and internal data.</em></div>
+
+  <div class="doc-footer">
+    <p><b>Document</b> · 2026 MAMA AWARDS Official Second-Screen Fan Experience Proposal</p>
+    <p><b>For</b> · CJ ENM / MAMA Awards Partnership Team</p>
+    <p><b>Prepared by</b> · Pocket Twin · Marketing & Partnerships · May 2026</p>
+    <p class="note">This proposal is shared as an initial discussion document. All figures, scope, and commercial terms are subject to validation and mutual agreement.</p>
+    <div class="draft">Draft for Partnership Discussion · v2.0</div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script>
+const links = document.querySelectorAll('.toc a');
+const sections = document.querySelectorAll('section[id]');
+function updateActive(){
+  const scrollPos = window.scrollY + 100;
+  let current = null;
+  sections.forEach(sec => { if(sec.offsetTop <= scrollPos) current = sec.id; });
+  links.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === '#' + current); });
+}
+window.addEventListener('scroll', updateActive);
+updateActive();
+</script>
+
+</body>
+</html>
